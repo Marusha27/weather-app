@@ -1,0 +1,62 @@
+h1 {
+  text-align: center;
+  margin: 20px 0;
+}
+h2 {
+  font-size: 34px;
+}
+h3 {
+  font-size: 24px;
+  color: grey;
+}
+h4 {
+  font-size: 45px;
+  color: blue;
+}
+ul {
+  list-style-type: none;
+}
+span {
+  opacity: 50%;
+}
+#celsius:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+#fahrenheit:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.description {
+  color: rgb(25, 158, 241);
+  margin-bottom: 60px;
+}
+
+.container {
+  padding: 40px;
+  margin: 50px;
+  font-family: "Roboto Slab", serif;
+  background: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+  border-radius: 30px;
+}
+.card-body {
+  background-color: white;
+  border-radius: 5px;
+}
+.card {
+  text-align: left;
+}
+.weatherdata {
+  margin-left: 300px;
+  margin-top: 30px;
+  font-size: 20px;
+}
+.card-title,
+.card-text {
+  text-align: center;
+}
+.card-text {
+  color: rgb(35, 33, 33);
+  font-size: 20px;
+  font-weight: lighter;
+}
