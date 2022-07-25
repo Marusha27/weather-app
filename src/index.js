@@ -37,8 +37,6 @@ let dateElement = document.querySelector("h3");
 let currentTime = new Date();
 dateElement.innerHTML = formatDate(currentTime);
 
-/////
-
 function showPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
