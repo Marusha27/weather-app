@@ -11,13 +11,13 @@ h3 {
 }
 h4 {
   font-size: 45px;
-  color: rgb(5, 5, 52);
+  color: darkblue;
 }
 ul {
   list-style-type: none;
 }
 span {
-  opacity: 50%;
+  opacity: 0.8;
 }
 #celsius:hover {
   cursor: pointer;
@@ -34,7 +34,7 @@ span {
 
 .container {
   padding: 40px;
-  margin: 50px;
+  margin: 50px 50px 0px 50px;
   font-family: "Roboto Slab", serif;
   background: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
   border-radius: 30px;
@@ -59,4 +59,9 @@ span {
   color: rgb(35, 33, 33);
   font-size: 20px;
   font-weight: lighter;
+}
+
+.footer {
+  margin-top: 30px;
+  margin-left: 50px;
 }
