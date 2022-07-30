@@ -32,7 +32,9 @@
           />
         </div>
         <div class="col-auto">
-          <button type="submit" class="btn btn-primary mb-3">Search</button>
+          <button type="submit" class="btn btn-primary mb-3" id="go-button">
+            Search
+          </button>
           <button
             type="submit"
             class="btn btn-primary mb-3"
@@ -44,14 +46,14 @@
       </form>
       <h1>5-Day Weather Forecast</h1>
       <div class="row">
-        <div class="col">
+        <div class="col temperature">
           <h2 id="currentCity" /h2> <h3 id="time" /h3>
           <h4>
             <img src="images/sun.png" alt="sun" id="icon" />
             <span class="coll" id="temperature">27</span
             ><span class="units">
-              <a id="celsius">°C |</a>
-              <a id="fahrenheit">°F</a>
+              <a href="#" id="celsius" class="active">°C |</a>
+              <a href="#" id="fahrenheit">°F</a>
             </span>
           </h4>
           <div id="description">Clear, partly cloudy</div>
@@ -60,7 +62,7 @@
           <div class="weatherdata">
             <ul>
               <li>Humidity: <span id="humidity"></span>%</li>
-              <li>Wind: <span id="wind"></span>m/s</li>
+              <li>Wind: <span id="wind"></span>km/h</li>
             </ul>
           </div>
         </div>
