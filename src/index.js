@@ -52,25 +52,41 @@ function getforecast(coordinates) {
   axios.get(apiUrl).then(displayforecast);
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function displayforecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class=row>`;
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="card" style="width: 10rem">
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="card" style="width: 10rem">
           <div class="card-body">
-            <h5 class="card-title">${day}</h5>
+            <h5 class="card-title">${formatDay(forecastDay.dt)}</h5>
             <p class="card-text">
-              <img src="images/sunbright.png" width="50px" />
+            
+              <img src="http://openweathermap.org/img/wn/${
+                forecastDay.weather[0].icon
+              }@2x.png" width="50px" />
               <br />
-              <span id="weather-forecast-temperature-max">18°C|</span>
-              <span id="weather-forecast-temperature-min"> 12°C </span>
+              <span id="weather-forecast-temperature-max">${Math.round(
+                forecastDay.temp.max
+              )}°C|</span>
+              <span id="weather-forecast-temperature-min">${Math.round(
+                forecastDay.temp.min
+              )}°C </span>
             </p>
           </div>
         </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;

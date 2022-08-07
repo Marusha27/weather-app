@@ -46,6 +46,7 @@ ul {
 }
 .card {
   text-align: left;
+  margin-right: 20px;
 }
 .weatherdata {
   margin-left: 300px;
