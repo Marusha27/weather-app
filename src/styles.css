@@ -15,9 +15,11 @@ h4 {
 ul {
   list-style-type: none;
 }
-span {
+#weather-forecast-temperature-min {
+  color: grey;
   opacity: 0.8;
 }
+
 #temperature {
   color: darkblue;
 }
@@ -55,7 +57,6 @@ span {
   text-align: center;
 }
 .card-text {
-  color: rgb(35, 33, 33);
   font-size: 20px;
   font-weight: lighter;
 }

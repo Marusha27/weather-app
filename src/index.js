@@ -102,6 +102,30 @@ function displayFahrenheitTemperature(event) {
   temperatureElement.innerHTML = Math.round(fahrenheitTemp);
 }
 
+function displayforecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class=row>`;
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+     <div class="card" style="width: 10rem">
+          <div class="card-body">
+            <h5 class="card-title">${day}</h5>
+            <p class="card-text">
+              <img src="images/sunbright.png" width="50px" />
+              <br />
+              <span id="weather-forecast-temperature-max">18°C|</span>
+              <span id="weather-forecast-temperature-min"> 12°C </span>
+            </p>
+          </div>
+        </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayCelsiusTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
@@ -116,3 +140,5 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+displayforecast();
