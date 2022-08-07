@@ -43,8 +43,37 @@ function showPosition(position) {
   let apiKey = "f8313846ad3a4b7f262248aa77fb3db4";
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
-
   axios.get(apiUrl).then(showTemperature);
+}
+
+function getforecast(coordinates) {
+  let apiKey = "f8313846ad3a4b7f262248aa77fb3db4";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayforecast);
+}
+
+function displayforecast(response) {
+  console.log(response.data.daily);
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class=row>`;
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="card" style="width: 10rem">
+          <div class="card-body">
+            <h5 class="card-title">${day}</h5>
+            <p class="card-text">
+              <img src="images/sunbright.png" width="50px" />
+              <br />
+              <span id="weather-forecast-temperature-max">18°C|</span>
+              <span id="weather-forecast-temperature-min"> 12°C </span>
+            </p>
+          </div>
+        </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
 
 function showTemperature(response) {
@@ -63,6 +92,8 @@ function showTemperature(response) {
   iconElement.setAttribute("src", iconUrl);
 
   celsiusTemperature = response.data.main.temp;
+
+  getforecast(response.data.coord);
 }
 
 function searchCity(city) {
@@ -102,30 +133,6 @@ function displayFahrenheitTemperature(event) {
   temperatureElement.innerHTML = Math.round(fahrenheitTemp);
 }
 
-function displayforecast() {
-  let forecastElement = document.querySelector("#forecast");
-  let forecastHTML = `<div class=row>`;
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
-     <div class="card" style="width: 10rem">
-          <div class="card-body">
-            <h5 class="card-title">${day}</h5>
-            <p class="card-text">
-              <img src="images/sunbright.png" width="50px" />
-              <br />
-              <span id="weather-forecast-temperature-max">18°C|</span>
-              <span id="weather-forecast-temperature-min"> 12°C </span>
-            </p>
-          </div>
-        </div>`;
-  });
-  forecastHTML = forecastHTML + `</div>`;
-  forecastElement.innerHTML = forecastHTML;
-}
-
 function displayCelsiusTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
@@ -140,5 +147,3 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
-
-displayforecast();
